@@ -25,7 +25,7 @@ It will become part of our javascript plugin extension mechanism using object mi
 
 Testing
 =======
-The <code>g3.Emulator</code> is used to test functioning behaviour of this object along with jasmine v.2.0.
+The <code>g3.Evaluator</code> is used to test functioning behaviour of this object along with jasmine v.2.0.
 
 <h3>How our code is constructed?</h3>
 <pre>
