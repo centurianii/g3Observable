@@ -35,7 +35,7 @@ client
   |-jquery
   :  :
   |-g3
-  :  |-g3Observable.js
+  :  |-g3Observable.js (this file)
   :  :
   |-tests
   |  |-jasmine-standalone-2.0.0
@@ -43,7 +43,7 @@ client
   |  |  |-spec
   :  :  :
   |  |-g3
-  |  :  |-g3Observable-SpecRunner.html (this file)
+  |  :  |-g3Observable-SpecRunner.html
   |  :  |-g3Observable-Spec.js
   |  :  |-g3Observable-SpecHelper.js
   :  :  :
