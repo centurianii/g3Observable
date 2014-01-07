@@ -6,7 +6,7 @@ A javascript object that implements the observer or pub/sub pattern.
 It implements the observer pattern or a publish-subscribe system based on subjects and functions registered under them.
 <ul>
 <li>The registration signature is: <code>register(func, subject, context)</code>.<br />
-If <code>'subject'</code> is ommited then it's <code>'any'</code>, if 'context' is omitted then function is called as usual otherwise it changes context and runs under the new one. A function can register under many subjects. It can be chained.</li>
+If <code>'subject'</code> is ommited then it's <code>'any'</code>, if <code>'context'</code> is omitted then function is called as usual otherwise it changes context and runs under the new one. A function can register under many subjects. It can be chained.</li>
 <li>The unregister signature is: <code>unregister(func, subject, context)</code>.<br />
 It breaks the chain and returns the number of unregistered functions.</li>
 <li>Our functions signature is: <code>function ([subject, arg1, arg2, ...])</code>.<br />
