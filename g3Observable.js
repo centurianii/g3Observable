@@ -2,7 +2,7 @@
  * Implements the observer pattern or a publish-subscribe system based on 
  * subjects and functions registered under them.
  *
-  * - The registration signature is: register(func, subject, context).
+ * - The registration signature is: register(func, subject, context).
  *   If 'subject' is ommited then it's 'any', if 'context' is omitted then 
  *   function is called as usual otherwise it changes context and runs under the 
  *   new one. A function can register under many subjects. It can be chained.
@@ -12,10 +12,10 @@
  *   When a message is fired for a specific subject then, all registered  
  *   functions are called and an array is passed to them constructed from the 
  *   arguments of the notify function.
- * - get(subject) break the chain and returns the array of objects [{function, 
- *   context}, ...] under a subject or the object of all subjects if null: 
- *   {subject1: [{function, context},...], ...}.
- * - reset() converts the object of all subjects to: {length: 0}. It can be 
+ * - get(subject) breaks the chain and returns the array of objects [{function, 
+ *   context}, ...] under a subject or the collection of all subjects if 
+ *   subject is null: {subject1: [{function, context},...], ...}.
+ * - reset() converts the collection of all subjects to: {length: 0}. It can be 
  *   chained.
  *
  * This version uses publisher or observable to push notification messages to 
