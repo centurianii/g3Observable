@@ -1,3 +1,30 @@
+/**
+ * Implements the observer pattern or a publish-subscribe system based on 
+ * subjects and functions registered under them.
+ *
+ * - The registration signature is: register(func, subject, context).
+ *   If 'subject' is ommited then it's 'any', if 'context' is omitted then 
+ *   function is called as usual otherwise it changes context and runs under the 
+ *   new one. A function can register under many subjects. It can be chained.
+ * - The unregister signature is: unregister(func, subject, context).
+ *   It breaks the chain and returns the number of unregistered functions.
+ * - Our functions signature is: function ([subject, arg1, arg2, ...]).
+ *   When a message is fired for a specific subject then, all registered  
+ *   functions are called and an array is passed to them constructed from the 
+ *   arguments of the notify function.
+ * - get(subject) returns the array of objects [{function, context}, ...] under 
+ *   a subject or the object of all subjects if null: {subject1: [{function, 
+ *   context},...], ...}.
+ * - reset() converts the object of all subjects to: {length: 0}.
+ *
+ * This version uses publisher or observable to push notification messages to 
+ * observers in contrast of a pull system where every observer queries the 
+ * observable.
+ *
+ * @version 0.1
+ * @author Scripto JS Editor by Centurian Comet.
+ * @copyright MIT licence.
+ */
 (function(g3, $, window, document, undefined){
    var observers = {length: 0};
    g3.Observable = {
@@ -35,7 +62,7 @@
          return j;
       },
       notify: function(subject){
-         var args = Array.prototype.slice.call(arguments, 1),
+         var args = arguments,
              obs = observers[subject],
              length,
              j = 0;
