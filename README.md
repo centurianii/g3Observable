@@ -49,7 +49,7 @@ client
   :  :  :
 </pre>
 
-There are two <code>g3</code> folders one contains the actual code and the other under tests contains the test files.
+There are two <code>g3</code> folders: the one contains the actual code and the other under <code>tests</code> contains the test files.
 
 <h3>Do you need help?</h3>
 <h4>Yesss please!</h4> Jasmine is a tough animal to handle!
