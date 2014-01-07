@@ -3,7 +3,7 @@ g3Observable
 
 A javascript object that implements the observer or pub/sub pattern.
 
-Implements the observer pattern or a publish-subscribe system based on subjects and functions registered under them.
+It implements the observer pattern or a publish-subscribe system based on subjects and functions registered under them.
 <ul>
 <li>The registration signature is: <code>register(func, subject, context)</code>.<br />
 If 'subject' is ommited then it's 'any', if 'context' is omitted then function is called as usual otherwise it changes context and runs under the new one. A function can register under many subjects. It can be chained.</li>
