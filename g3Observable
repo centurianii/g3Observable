@@ -1,0 +1,67 @@
+(function(g3, $, window, document, undefined){
+   var observers = {length: 0};
+   g3.Observable = {
+      register: function(func, subject, context){
+         subject = subject || 'any';
+         if(!observers[subject])
+            observers[subject] = [];
+         observers[subject].push({
+            'func': func,
+            'context': context
+         });
+         ++observers.length;
+         return this;
+      },
+      unregister: function(func, subject, context){
+         subject = subject || 'any';
+         var obs = observers[subject],
+             length,
+             j = 0;
+         if(obs && obs.length)
+            length = obs.length;
+         else
+            return false;
+         for(var i = 0; i < length; i++){
+            if((obs[i].func === func) && (obs[i].context === context)){
+               obs.splice(i, 1);
+               length = obs.length;
+               j++;
+               i--;
+            }
+         }
+         if(length === 0)
+            delete observers[subject]; //NOT: delete obs;
+         --observers.length;
+         return j;
+      },
+      notify: function(subject){
+         var args = Array.prototype.slice.call(arguments, 1),
+             obs = observers[subject],
+             length,
+             j = 0;
+         if(obs)
+            length = obs.length;
+         else
+            return false;
+         var context;
+         for(var i = 0; i < length; i++){
+            if((obs[i].context === null) || (typeof obs[i].context != "object"))
+               obs[i].func(args);
+            else
+               obs[i].func.apply(context, args);
+            j++;
+         }
+         return j;
+      },
+      get: function(subject){
+         if(subject)
+            return observers[subject];
+         else
+            return observers;
+      },
+      reset: function(){
+         observers = {length: 0};
+         return this;
+      }
+   }
+}(window.g3 = window.g3 || {}, jQuery, window, document));
