@@ -1,6 +1,10 @@
 /********************************Object Observable******************************
  * Implements the observer pattern or a publish-subscribe system based on 
  * subjects and functions registered under them.
+ * Our functions signature is: function ([subject, arg1, arg2, ...]).
+ * When a message is fired for a specific subject then, all registered functions 
+ * are called and an array is passed to them constructed from the arguments of 
+ * the notify function.
  * This version uses publisher or observable to push notification messages to 
  * observers in contrast of a pull system where every observer queries the 
  * observable.
