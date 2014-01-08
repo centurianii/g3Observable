@@ -11,8 +11,10 @@ If <code>'subject'</code> is ommited then it's <code>'any'</code>, if <code>'con
 It breaks the chain and returns the number of unregistered functions.</li>
 <li>Our functions signature is: <code>function ([subject, arg1, arg2, ...])</code>.<br />
 When a message is fired for a specific subject then, all registered functions are called and an array is passed to them constructed from the arguments of the notify function.</li>
+<li><code>notify(subject)</code><br />
+It breaks the chain and returns the number of the functions it calls. If there are no registered functions under this subject then, it returns false.</li>
 <li><code>get(subject)</code><br />
-breaks the chain and returns the array of objects <code>[{function, context}, ...]</code> under a subject or the object of all subjects if subject is null: <code>{subject1: [{function, context}, ...], ...}</code>.</li>
+breaks the chain and returns the array of objects <code>[{function, context}, ...]</code> under a subject or the object of all subjects if subject is null: <code>{length: n, subject1: [{function, context}, ...], ...}</code>.</li>
 <li>reset()<br />
 converts the object of all subjects to: <code>{length: 0}</code>. It can be chained.</li>
 </ul>
