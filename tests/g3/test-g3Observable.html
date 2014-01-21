@@ -9,7 +9,7 @@
         |-jquery
         :  :
         |-g3
-        :  |-g3Observable.js
+        :  |- <g3MyClass.js>
         :  :
         |-tests
         |  |-jasmine-standalone-2.0.0
@@ -17,209 +17,37 @@
         |  |  |-spec
         :  :  :
         |  |-g3
-        |  :  |-g3Observable-SpecRunner.html (this file)
-        |  :  |-g3Observable-Spec.js
-        |  :  |-g3Observable-SpecHelper.js
+        |  :  |- <g3MyClass-SpecRunner.html>
+        |  :  |- <g3MyClass-Spec.js>
+        |  :  |- <g3MyClass-SpecHelper.js>
+        |  :  |- g3evaluator.css
+        |  :  |- g3evaluator.js
+        |  :  |- g3evaluator.html (rename this file to test-g3MyClass.html)
+        |  :  |- <test-g3MyClass.html>
         :  :  :
    -->
-   <style>
-   body {
-      background: #F8F8F8;
-   }
-   #title > * {
-      display: inline-block;
-   }
-   #title span {
-      cursor: pointer;
-      color: blue;
-   }
-   .label {
-      display: inline-block;
-      min-width: 5em;
-      margin: 0px 5px 5px;
-   }
-   legend {
-      font: bold 1.2em sans-serif;
-   }
-   .hover {
-      cursor: pointer;
-   }
-   .hidden {
-      display: none;
-   }
-   #boardWrapper > * {
-      float: left;
-      width: 50%;
-      overflow: auto;
-      max-height: 20em;
-   }
-   .clear {
-      clear: both;
-   }
-   #boardWrapper legend{
-      color: #ffffff;
-      background: #000058;
-      padding: 0.4em;
-   }
-   textarea {
-      font: 0.8em "Courier New",monospace;
-      color: #ffffff;
-      background: #000058;
-      width: 100%;
-   }
-   pre {
-      margin: 0 2px;
-      white-space: pre-wrap;
-      background: #eee;
-   }
-   #console .data {
-      display: block;
-      margin: 2px;
-      border: 1px solid #ccc;
-      padding: 0;
-   }
-   /* 
-    * '.tabbedData': General styles of panels
-    */
-   .tabbedData {
-      position: relative;
-      display: inline-block;
-      float: left;
-      overflow: auto;
-      width: 50%;
-      height: 20em;
-      margin: 2px;
-      border: 3px dotted #808080;
-   }
-   .tabbedData:hover {
-      border-color: #000000;
-   }
-   /*
-    * '.tabs', '.titleBar': contain floating classes of each panel
-    */
-   .tabbedData .tabs, .tabbedData .titleBar {
-      display: block;
-      clear: both;
-   }
-   /*
-    * '.titleBar': Title bar of each panel
-    */
-   .tabbedData .titleBar {
-      display: inline-block;
-      margin: 2px;
-      border: 1px solid #ccc;
-      background: #eee;
-   }
-   .tabbedData .titleBar .title {
-      float: left;
-      margin: 3px;
-      border: 0;
-      padding: 4px 8px;
-      color: #666666;
-   }
-   .tabbedData .titleBar .title:hover {
-      cursor: pointer;
-      color: #ffffff;
-      background: #808080;
-   }
-   .tabbedData .titleBar .load {
-      float: left;
-      margin: 2px;
-      border: 1px solid #ccc;
-      padding: 4px 2px;
-      color: #666666;
-   }
-   .tabbedData .titleBar .load:hover {
-      cursor: pointer;
-      color: #ffffff;
-      background: #808080;
-   }
-   /*
-    * '.tabBar': Title bar of each tab
-    */
-   .tabbedData .tabs .tabBar {
-      display: inline-block;
-      float: left;
-      margin: 1px;
-      border: 1px solid #ccc;
-      background: #eee;
-   }
-   /*
-    * '.tab': Tab title
-    */
-   .tabbedData .tabs .tabBar .tab {
-      float: left;
-      margin: 1px;
-      border: 0;
-      padding: 2px 8px;
-      color: #666666;
-   }
-   .tabbedData .tabs .tabBar .tab:hover {
-      cursor: pointer;
-      color: #ffffff;
-      background: #808080;
-   }
-   /*
-    * '.close': Close button of each tab bar
-    */
-   .tabbedData .tabs .tabBar .close {
-      float: left;
-      margin: 1px;
-      border: 1px solid #ccc;
-      padding: 2px 2px;
-      font: 1em "Courier New",monospace;
-      color: #666666;
-   }
-   .tabbedData .tabs .tabBar .close:hover {
-      cursor: pointer;
-      color: #ffffff;
-      background: #808080;
-   }
-   /*
-    * '.data': Data for each tab bar
-    */
-   .tabbedData .tabs .data {
-      display: block;
-      margin: 2px;
-      border: 1px solid #ccc;
-      padding: 4px 8px;
-   }
-   /*
-    * Js styles
-    */
-   #title .edit {
-      color: red;
-   }
-   .tabbedData .titleBar .visited {
-      color: #666666;
-      background: #d6d6d6;
-   }
-   .tabbedData .titleBar .enabled {
-      color: #ffffff;
-      background: #808080;
-   }
-   .tabbedData .tabs .tabBar .visited {
-      color: #666666;
-      background: #d6d6d6;
-   }
-   .tabbedData .tabs .tabBar .enabled {
-      color: #ffffff;
-      background: #808080;
-   }
-   .tabbedData .tabs .hide {
-      display: none;
-   }
-   </style>
+   <link rel="stylesheet" type="text/css" href="g3evaluator.css">
 </head>
 <body>
-<div id="title"><h1 contenteditable="false">Evaluator: Test Observable pattern</h1><span>[edit]</span></div>
+
+<div id="title"><h1 contenteditable="false">Evaluator: Test observable pattern</h1><h1 contenteditable="false"><br></h1><span class=""></span><h1 contenteditable="false"><br></h1><span class="">[edit]</span></div>
+<div id="stub"></div>
+<form id="loadFrame">
+<fieldset>
+   <legend class="hover"><b>Load/Remove html-stub in frame</b></legend>
+   <div style="display: none;" class="hidden">
+   <label class="label" for="frameSrc">Frame source:</label><input id="frameSrc" size="30" type="text"><br>
+   <input value="Load" type="button"><input value="Remove" type="button">
+   </div>
+</fieldset>
+</form>
 <form id="bodyHtml">
 <fieldset>
    <legend class="hover"><b>Load body html (no &lt;script&gt;)</b></legend>
    <div class="hidden">
-   <textarea ROWS="5" wrap="virtual"></textarea><br />
-   <input type="button" value="Load" /><input type="button" value="Clear" /><br />
-   <label class="label" for="exclName">Exclude ids:</label><input type="text" id="exclName" size="30">
+   <textarea rows="5" wrap="virtual"></textarea><br>
+   <input value="Load" type="button"><input value="Clear" type="button"><br>
+   <label class="label" for="exclName">Exclude ids:</label><input id="exclName" size="30" type="text">
    seperate by space or comma or semicolon or vertical bar: [ ,;|]
    </div>
 </fieldset>
@@ -227,642 +55,186 @@
 <form id="addRemoveLib">
 <fieldset>
    <legend class="hover">Add/Remove library</legend>
-   <div class="hidden">
-   <label class="label" for="libName">Script id:</label><input type="text" id="libName" size="30"><br />
-   <label class="label" for="libPath">Path:</label><input type="text" id="libPath" size="30"><br />
-   <input type="button" value="Add" /><input type="button" value="Remove" />
+   <div style="display: none;" class="hidden">
+   <label class="label" for="libName">Script id:</label><input id="libName" size="30" type="text"><br>
+   <label class="label" for="libPath">Path:</label><input id="libPath" size="30" type="text"><br>
+   <input value="Add" type="button"><input value="Remove" type="button">
    </div>
 </fieldset>
 </form>
 <form id="libraries">
 <fieldset>
    <legend>Load library</legend>
-<label class="label" for="w2WMB">g3Observer</label><input id="w2WMB" value="../../g3/g3Observable.js" type="checkbox"><br></fieldset>
+<label class="label" for="TROqd">g3observable</label><input id="TROqd" value="../../g3/g3observable.js" type="checkbox"><br></fieldset>
 </form>
 <div id="boardWrapper">
 <form id="blackboard">
 <fieldset>
    <legend><b>Blackboard</b></legend>
-   <label class="label" for="title">Tab title:</label><input type="text" id="title" size="40"><br />
-   <textarea ROWS="10" wrap="virtual"></textarea><br />
-   <input type="button" value="Execute!" /><input type="button" value="Save" /><input type="button" value="Save to a new tab" /><input type="button" value="Clear" /><br />
+   <label class="label" for="title">Tab title:</label><input id="title" size="40" type="text"><br>
+   <textarea style="width: 100%;" rows="10" wrap="virtual"></textarea><br>
+   <input value="Execute!" type="button"><input value="Save" type="button"><input value="Save to a new tab" type="button"><input value="Clear" type="button"><br>
 </fieldset>
 </form>
 <form id="console">
 <fieldset>
    <legend><b>Console</b></legend>
    <div class="data"><pre></pre></div>
-   <input type="button" value="Clear" />
+   <input value="Clear" type="button">
 </fieldset>
 </form>
 </div>
-<div class="clear"></div>
+<div class="clear clearBoardWrapper"></div>
 <form id="addRemovePanel">
 <fieldset>
    <legend class="hover">Add/Remove panel</legend>
-   <div class="hidden">
-   <label class="label" for="panelTitle">Panel title:</label><input type="text" id="panelTitle" size="30"><br />
-   <input type="button" value="Add" /><input type="button" value="Remove" />
+   <div style="display: none;" class="hidden">
+   <label class="label" for="panelTitle">Panel title:</label><input id="panelTitle" size="30" type="text"><br>
+   <input value="Add" type="button"><input value="Remove" type="button">
    </div>
 </fieldset>
 </form>
-<hr />
+<hr>
 <p><span style="padding: 0.4em 0.8em; color: #003380; background-color: #66a3ff;">Load any tab to blackboard</span></p>
 <div id="tabbedDataWrapper">
-<div class="tabbedData">
-<div class="titleBar"><p class="title">g3Observable</p><p class="load">Load tab</p></div>
-<div class="tabs">
-<div class="tabBar"><div class="tab">Test Observable #1</div><div class="close">X</div></div><div class="tabBar"><div class="tab">Test Observable #2</div><div class="close">X</div></div><div class="tabBar"><div class="tab">Test Observable #3</div><div class="close">X</div></div></div>
-<div class="tabs">
-<div class="data"><pre>var testObservable = function( args ){
+<div class="gridTabbedData"><div class="tabbedData"><div class="titleBar"><p class="title enabled">g3observable</p><p class="load">Load tab</p></div><div class="tabs"><div class="tabBar"><div class="tab">Test observable with #1 observer</div><div class="close">X</div></div><div class="tabBar"><div class="tab">Test observable with #2 observers</div><div class="close">X</div></div></div><div class="tabs"><div class="data"><pre>//Test observable with #1 observer
+var observer = function( args ){
    console.log(args);
 };
-g3.Observable.reset();
-g3.Observable.register(testObservable, 'example1');
-console.log('---------------------');
-console.log(g3.Observable.get());
-console.log('---------------------');
-console.log(g3.Observable.get('example1'));
-console.log('---------------------');
-var result = 0;
-result = g3.Observable.notify('example1', 'hello world!' );
-console.log('sent: '+result+' notifies\n');
-result = 0;
-result = g3.Observable.notify('example1', ['test','a','b','c'] );
-console.log('sent: '+result+' notifies\n');
-result = 0;
-result = g3.Observable.notify('example1', [{'color':'blue'},{'text':'hello'}] );
-console.log('sent: '+result+' notifies\n');
-result = 0;
-result = g3.Observable.unregister(testObservable, 'example1');
-console.log('unregister: '+result+' observers\n');
-result = 0;
-console.log('---------------------');
-console.log(g3.Observable.get());
-console.log('---------------------');
-result = g3.Observable.notify('example1', 'hello again!' );
-console.log('sent: '+result+' notifies\n');</pre></div><div class="data"><pre>var testObservable1 = function( args ){
-   console.log(args);
-};
-var testObservable2 = function( args ){
-   console.log(args);
-};
+g3.observable.reset();
+var result;
 
-g3.Observable.reset();
-g3.Observable.register(testObservable1, 'example1');
-g3.Observable.register(testObservable2, 'example1');
-console.log('---------------------');
-console.log(g3.Observable.get());
-console.log('---------------------');
-console.log(g3.Observable.get('example1'));
-console.log('---------------------');
-var result = 0;
-result = g3.Observable.notify('example1', 'hello world!' );
-console.log('sent: '+result+' notifies\n');
-result = 0;
-result = g3.Observable.notify('example1', ['test','a','b','c'] );
-console.log('sent: '+result+' notifies\n');
-result = 0;
-result = g3.Observable.notify('example1', [{'color':'blue'},{'text':'hello'}] );
-console.log('sent: '+result+' notifies\n');
-result = 0;
-result = g3.Observable.unregister(testObservable1, 'example1');
-console.log('unregister: '+result+' observers\n');
-result = 0;
-console.log('---------------------');
-console.log(g3.Observable.get('example1'));
-console.log('---------------------');
-result = g3.Observable.notify('example1', 'hello again!' );
-console.log('sent: '+result+' notifies\n');</pre></div><div class="data"><pre>var testObservable1 = function( args ){
+console.log('get() should have keys: "length" and "example1"');
+console.log('------------------');
+g3.observable.register(observer, 'example1');
+console.log(g3.observable.get());
+
+console.log('get("example1") should have key: 0');
+console.log('------------------');
+console.log(g3.observable.get('example1'));
+
+console.log('notify() should print: an array with 2 args');
+console.log('------------------');
+result = g3.observable.notify('example1', 'hello world!');
+
+console.log('return value of notify() should be: 1');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('notify() should print: an array with 2 args');
+console.log('------------------');
+result = g3.observable.notify('example1', ["test",1,2,3]);
+
+console.log('return value of notify() should be: 1');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('notify() should print: an array with 2 args');
+console.log('------------------');
+result = g3.observable.notify('example1', [{'color':'blue'},{'text':'hello'}]);
+
+console.log('return value of notify() should be: 1');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('return value of unregister() should be: 1');
+console.log('------------------');
+result = g3.observable.unregister(observer, 'example1');
+console.log('unregister: '+result+' observers');
+
+console.log('get() should have key: "length"');
+console.log('------------------');
+console.log(g3.observable.get());
+
+console.log('notify() should not print');
+console.log('------------------');
+result = g3.observable.notify('example1', 'hello again!');
+
+console.log('return value of notify() should be: false');
+console.log('------------------');
+console.log('sent: '+result+' notifies');</pre></div><div class="data"><pre>//Test observable with #2 observers
+var observer1 = function( args ){
    console.log(args);
 };
-var testObservable2 = testObservable1;
+var observer2 = function( args ){
+   console.log(args);
+};
+g3.observable.reset();
+var result;
 
-g3.Observable.reset();
-g3.Observable.register(testObservable1, 'example1');
-g3.Observable.register(testObservable2, 'example1');
-var result = 0;
-result = g3.Observable.notify('example1', 'hello world!' );
-console.log('sent: '+result+' notifies\n');
-result = 0;
-result = g3.Observable.notify('example1', ['test','a','b','c'] );
-console.log('sent: '+result+' notifies\n');
-result = 0;
-result = g3.Observable.notify('example1', [{'color':'blue'},{'text':'hello'}] );
-console.log('sent: '+result+' notifies\n');
-result = 0;
-result = g3.Observable.unregister(testObservable1, 'example1');
-console.log('unregister: '+result+' observers\n');
-result = 0;
-result = g3.Observable.notify('example1', 'hello again!' );
-console.log('sent: '+result+' notifies\n');</pre></div></div>
-</div>
-</div>
+console.log('get() should have keys: "length" and "example1"');
+console.log('------------------');
+g3.observable.register(observer1, 'example1');
+g3.observable.register(observer2, 'example1');
+console.log(g3.observable.get());
+
+console.log('get("example1") should have keys: 0 and 1');
+console.log('------------------');
+console.log(g3.observable.get('example1'));
+
+console.log('notify() should print: an array with 2 args, 2 times');
+console.log('------------------');
+result = g3.observable.notify('example1', 'hello world!');
+
+console.log('return value of notify() should be: 2');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('notify() should print: an array with 2 args, 2 times');
+console.log('------------------');
+result = g3.observable.notify('example1', ["test",1,2,3]);
+
+console.log('return value of notify() should be: 2');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('notify() should print: an array with 2 args, 2 times');
+console.log('------------------');
+result = g3.observable.notify('example1', [{'color':'blue'},{'text':'hello'}]);
+
+console.log('return value of notify() should be: 2');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('return value of unregister() should be: 1');
+console.log('------------------');
+result = g3.observable.unregister(observer1, 'example1');
+console.log('unregister: '+result+' observers');
+
+console.log('get("example1") should have key: 0');
+console.log('------------------');
+console.log(g3.observable.get('example1'));
+
+console.log('notify() should print: an array with 2 args, 1 time');
+console.log('------------------');
+result = g3.observable.notify('example1', 'hello again!');
+
+console.log('return value of notify() should be: 1');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('return value of unregister() should be: 1');
+console.log('------------------');
+result = g3.observable.unregister(observer2, 'example1');
+console.log('unregister: '+result+' observers');
+
+console.log('get() should have key: "length"');
+console.log('------------------');
+console.log(g3.observable.get());
+
+console.log('notify() should not print');
+console.log('------------------');
+result = g3.observable.notify('example1', 'hello again!');</pre></div></div></div></div></div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script> window.jQuery || document.write('<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"><\/script>')</script>
 <script>window.jQuery || document.write('<script src="../../jquery/jquery-1.10.2.js"><\/script>')</script>
 <script src="../../g3/g3debug.js"></script>
-
+<script src="g3evaluator.js"></script>
 <script>
 $(function() {
-(function(g3, $, window, document, undefined){
-g3.Evaluator = (function(){
-   /*
-    * Add necessary functions from 'g3.utils' namespace.
-    */
-   g3.utils = g3.utils || {};
-   g3.utils.randomString = function(len, charSet){
-      charSet = charSet || 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      var result = '', ndx;
-      for (var i = 0; i < len; i++){
-         ndx = Math.floor(Math.random() * charSet.length);
-         result += charSet.substring(ndx, ndx+1);
-      }
-      return result;
-   }
-   
-   var obj;
-   /*
-    * initialization function:
-    * contains event handlers and tree manipulation
-    */
-   function init(){
-      /*
-       * 'global' variables
-       */
-      var nodes = {
-         $console: $("form#console pre"), /*see _console*/
-         $excludeNodes: $("form#bodyHtml input[type='text']"), /*see 'load body html button actions'*/
-         $name: $('form#addRemoveLib #libName'), /*see 'add/remove library button actions'*/
-         $path: $('form#addRemoveLib #libPath'),
-         $title: $('form#blackboard input#title'), /*see 'blackboard button actions'*/
-         $panel: $('form#addRemovePanel #panelTitle'), /*see 'add/remove panel button actions'*/
-         $blackboard: $('#blackboard textarea') /*see 'load to blackboard behaviour'*/
-      };
-      
-      /*
-       * generic _console object with log function
-       */
-      var _console = {
-         rerun: false,
-         log: function(value){
-            //IE8 returns form with id="console"!
-            if(console && console.log)
-               console.log(value);
-            if(!this.rerun)
-               nodes.$console.html('');
-            this.rerun = true;
-            if(value && (typeof value === 'object'))
-               nodes.$console.html(nodes.$console.html() + g3.debug(value).toHtml());
-            else
-               nodes.$console.html(nodes.$console.html() + value + '<br />');
-         }
-      };
-      
-      /*
-       * evaluation function
-       */
-      function evalExpr(value){
-         var commands;
-         var re = /console.log/g;
-         value = value.replace(re, '_console.log');
-         try{
-            eval(value);
-         }catch(e){
-            alert('Please load a library to test [' + e +']');
-         }
-      }
-      
-      /*
-       * set/edit title
-       */
-      document.title = $("#title h1").text();
-      $("#title span").click(function(){
-         $(this).toggleClass('edit');
-         if($(this).hasClass('edit'))
-            $(this).siblings('h1').prop('contenteditable', 'true');
-         else{
-            $(this).siblings('h1').prop('contenteditable', 'false');
-            //$('title', document.getElementsByTagName('head')[0]).text($(this).siblings('h1').text());
-            document.title = $("#title h1").text();
-         }
-      });
-      
-      /*
-       * load body html button actions
-       */
-      $("form#bodyHtml legend").click(function(){
-         $("form#bodyHtml div").slideToggle();
-      });
-      $("form#bodyHtml button, form#bodyHtml input[type='button']").click(function(event){
-         if($(this).val() === 'Load'){
-            var txt = '';
-            var excl = nodes.$excludeNodes.val().split(/\s+|\s*,\s*|\s*;\s*|\s*\|\s*/);
-            for(var i = 0; i < excl.length; i++){
-               if(!excl[i]){
-                  excl.splice(i, 1);
-                  i--;
-               }
-            }
-            $(document.body).eq(0).contents().each(function(){
-               if(this.nodeType === 3)
-                  txt += this.nodeValue;
-               else if(this.nodeType === 1 && !(this.nodeName.toUpperCase() === 'SCRIPT')){
-                  if(excl && (excl.length > 0)){
-                     for(var i = 0; i < excl.length; i++){
-                        if(excl[i]){
-                           if(excl[i] !== this.id)
-                              txt += this.outerHTML;
-                        }else
-                           txt += this.outerHTML;
-                     }
-                  }else
-                     txt += this.outerHTML;
-               }
-            });
-            $(event.target).siblings('textarea').val(txt);
-         }else if($(this).val() === 'Clear'){
-            $(event.target).siblings('textarea').val('');
-         }
-      });
-      
-      /*
-       * add/remove library button actions:
-       * label's text will become the script's id and
-       * input's value will become the script's path
-       */
-      $("form#addRemoveLib legend").click(function(){
-         $("form#addRemoveLib div").slideToggle();
-      });
-      $("form#addRemoveLib button, form#addRemoveLib input[type='button']").click(function(event){
-         if($(this).val() === 'Add'){
-            var found = false;
-            if(nodes.$name.val()){
-               $('form#libraries label').each(function(){
-                  if($(this).text() === nodes.$name.val()){
-                     found = true;
-                     return false;
-                  }
-               });
-               if(!found){
-                  var id = g3.utils.randomString(5);
-                  var txt = '<label class="label" for="' + id + '">' +
-                            nodes.$name.val() +'</label><input type="checkbox" id="' +
-                            id + '" value="' + nodes.$path.val() + '" /><br />';
-                  $("#libraries fieldset").append(txt);
-               }
-            }
-         }else if($(this).val() === 'Remove'){
-            var found = -1;
-            if(nodes.$name.val()){
-               $('form#libraries label').each(function(ndx){
-                  if($(this).text() === nodes.$name.val()){
-                     found = ndx;
-                     return false;
-                  }
-               });
-               if(found > -1){
-                  $("form#libraries label").eq(found).next('input').addBack().next('br').addBack().remove();
-               }
-            }
-         }
-      });
-      
-      /*
-       * library check box behaviours
-       */
-      $("#libraries").on('change', 'input', function(event){
-         $("#libraries input").each(function(){
-            //var $script = $('script[id=\'' + $(this).val() + '\']');
-            //label's text is the script's id
-            var $script = $(document.getElementById($(this).prev().text()));
-            if($script.length === 0 && $(this).prop("checked")){
-               //$("body").append($("<script />", {'id': $(this).prev().text(), 'src': $(this).val()}));
-               var s = document.getElementsByTagName('body')[0].appendChild(document.createElement('script'));
-               s.type = 'text/javascript';
-               //input's value is the script's path
-               s.src = $(this).val();
-               //label's text is the script's id
-               s.id = $(this).prev().text();
-            }
-            if($script.length > 0 && !$(this).prop( "checked" ))
-               $script.remove();
-         });
-      }).change();
-      
-      /*
-       * private variables for active panel, tab and data
-       */
-      var panelState = {
-         $tabbedData: null, /*the active panel*/
-         $tab: null, /*the active tab*/
-         $data: null /*the data of the active tab*/
-      };
-      
-      /*
-       * state of common buttons 'save' and 'save as': 0-disabled, 1-enabled
-       * and a handler 'apply()' that accepts a 'state' object as argument
-       */
-      var buttonState = {
-         buttons: {
-            save: null,
-            saveAs: null
-         },
-         state: {
-            save: 0,
-            saveAs: 0
-         },
-         apply: function(obj){
-            if(obj){
-               this.state.save = obj.save;
-               this.state.saveAs = obj.saveAs;
-            }
-            if(this.state.save === 0)
-               $(this.buttons.save).prop('disabled', 'disabled');
-            else
-               $(this.buttons.save).removeAttr('disabled');
-            if(this.state.saveAs === 0)
-               $(this.buttons.saveAs).prop('disabled', 'disabled');
-            else
-               $(this.buttons.saveAs).removeAttr('disabled');
-            return this;
-         },
-         init: function(){
-            var self = this;
-            $("form#blackboard button, form#blackboard input[type='button']").each(function(){
-               if($(this).val() === 'Save')
-                  self.buttons.save = this;
-               if($(this).val() === 'Save to a new tab')
-                  self.buttons.saveAs = this;
-            });
-            return this;
-         }
-      };
-      
-      /*
-       * disable buttons initially
-       */
-      if(!panelState.$tabbedData){
-         buttonState.init().apply();
-      }
-      
-      /*
-       * blackboard button actions
-       */
-      $("form#blackboard button, form#blackboard input[type='button']").click(function(event){
-         if($(this).val() === 'Execute!'){
-            _console.rerun = false;
-            evalExpr($(event.target).siblings('textarea').val());
-         }else if(panelState.$data && $(this).val() === 'Save'){
-            if(!nodes.$title.val() || (nodes.$title.val() !== panelState.$tab.text())){
-               nodes.$title.after('<span id = "message"><span style="color: red; padding: 0 2px;">Error on title!</span><span id="suggestedTitle" style="cursor: pointer"> Suggested: \''+panelState.$tab.text()+'\' (click to load)</span></span>');
-            }else
-               panelState.$data.find('pre').text($(event.target).siblings('textarea').val());
-         }else if(panelState.$tabbedData && ($(this).val() === 'Save to a new tab')){
-            //find tab info at closest parent
-            var titles = [], $tabs, length = 1;
-            if(panelState.$tab)
-               $tabs =  panelState.$tab.closest('.tabs');
-            else
-               $tabs = $('.tabs', panelState.$tabbedData).eq(0);
-            $tabs.find('.tab').each(function(){
-               titles.push($(this).text());
-            });
-            length += $('.tab', $tabs).length;
-            if(!nodes.$title.val() || ($.inArray(nodes.$title.val(), titles) >= 0)){
-               if(nodes.$title.next('#message').length == 0)
-                  nodes.$title.after('<span id = "message"><span style="color: red; padding: 0 2px;">Error on title!</span><span id="suggestedTitle" style="cursor: pointer"> Suggested: \'Tab '+length+'\' (click to load)</span></span>');
-            }else{
-               $tabs.append('<div class="tabBar"><div class="tab">' + nodes.$title.val() + '</div><div class="close">X</div></div>');
-               var $newData;
-               if(panelState.$data)
-                  $newData = $('<div class="data"><pre></pre></div>').appendTo(panelState.$data.closest('.tabs'));
-               else
-                  $newData = $('<div class="data"><pre></pre></div>').appendTo($('.tabs', panelState.$tabbedData).eq(1));
-               $('pre', $newData)
-                  .html($(event.target).siblings('textarea').val());
-               if(panelState.$tab)
-                  $('pre', $newData).closest('.data').addClass('hide');
-            }
-         }else if($(this).val() === 'Clear'){
-            $(event.target).siblings('textarea').val('');
-         }
-      });
-      
-      /*
-       * console button actions
-       */
-       $("form#console button, form#console input[type='button']").click(function(event){
-         if($(this).val() === 'Clear'){
-            nodes.$console.html('');
-         }
-      });
-      
-      /*
-       * add/remove panel button actions:
-       * label's text will become the script's id and
-       * input's value will become the script's path
-       */
-      $("form#addRemovePanel legend").click(function(){
-         $("form#addRemovePanel div").slideToggle();
-      });
-      $("form#addRemovePanel button, form#addRemovePanel input[type='button']").click(function(event){
-         if($(this).val() === 'Add'){
-            var found = false;
-            if(nodes.$panel.val()){
-               $('#tabbedDataWrapper .tabbedData .titleBar .title').each(function(){
-                  if($(this).text() === nodes.$panel.val()){
-                     found = true;
-                     return false;
-                  }
-               });
-               if(!found){
-                  var txt = '<div class="tabbedData"><div class="titleBar"><p class="title">' +
-                  nodes.$panel.val() + '</p><p class="load">Load tab</p></div><div class="tabs"></div><div class="tabs"></div></div>';
-                  $('#tabbedDataWrapper').append(txt);
-               }
-            }
-         }else if($(this).val() === 'Remove'){
-            var found = -1;
-            if(nodes.$panel.val()){
-               $('#tabbedDataWrapper .tabbedData .titleBar .title').each(function(ndx){
-                  if($(this).text() === nodes.$panel.val()){
-                     $(this).closest('.tabbedData').remove();
-                     return false;
-                  }
-               });
-            }
-         }
-      });
-      
-      /*
-       * next to title error message behaviour
-       */
-      $('form#blackboard').on('click', 'span#suggestedTitle', function(){
-            var tmp = $(this).text().match(/'(.*)'/);
-            $('form#blackboard input#title').val(tmp[1]);
-            $('form#blackboard #message').remove();
-      });
-      
-      /*
-       * panel title behaviour: '.tabbedData .titleBar .title'
-       * delegator on '.tabbedDataWrapper'
-       * defines private 'panelState.$tabbedData' variable
-       */
-      $('#tabbedDataWrapper').on('click', '.tabbedData .titleBar .title', function(event){
-         //repeated clicks on panel title
-         if(panelState.$tabbedData && (panelState.$tabbedData.find('.titleBar .title').is($(this))))
-            return false;
-         //enable panel's title
-         $(this).addClass('enabled');
-         //enable 'save as' button
-         buttonState.apply({saveAs: 1});
-         //disable 'save' button, previous panel title and tab title when a new panel is activated
-         $newTabbedData = $(this).closest('.tabbedData');
-         if(panelState.$tabbedData && !($newTabbedData.is(panelState.$tabbedData))){
-            buttonState.apply({save: 0});
-            panelState.$tabbedData.find('.titleBar .title').removeClass('enabled');
-            //if a tab title fired this event, let private 'panelState.$tab' and 'panelState.$data' to 
-            //be handled by it's handler else, nullify them here
-            if(panelState.$tab && !event.tabbedData){
-               panelState.$tab.removeClass('enabled');
-               //panelState.$tab.addClass('visited');
-               panelState.$tab = null;
-               panelState.$data = null;
-            }
-         }
-         //define new private 'panelState.$tabbedData'
-         panelState.$tabbedData = $newTabbedData;
-      });
-      
-      /*
-       * load to blackboard behaviour: '.tabbedData .titleBar .load'
-       * delegator on '.tabbedDataWrapper'
-       */
-      $('#tabbedDataWrapper').on('click', '.tabbedData .titleBar .load', function(){
-         if(panelState.$tabbedData){
-            var tmp = '';
-            panelState.$tabbedData.find('.tabs .data').each(function(){
-               if(!$(this).hasClass('hide'))
-                  tmp += $(this).find('pre').text();
-            });
-            nodes.$blackboard.val(tmp);
-            if(panelState.$tab)
-               $('input#title').val(panelState.$tab.text());
-         }
-      });
-      
-      /*
-       * tab title behaviours: '.tabbedData .tabs .tabBar .tab'
-       * delegator on '.tabbedDataWrapper'
-       * defines private 'panelState.$tabbedData', 'panelState.$tab' and 'panelState.$data' variables
-       */
-      $('#tabbedDataWrapper').on('click', '.tabbedData .tabs .tabBar .tab', function(event){
-         var $newTab = $(this);
-         //toggle tab title and data on repeated clicks, also, if no tab is enabled 
-         //then, nullify variables 'panelState.$tab' and 'panelState.$data' and disable 'save' button
-         if(panelState.$tab && panelState.$tab.is($newTab)){
-            panelState.$tab.toggleClass('enabled');
-            if(panelState.$tab.hasClass('enabled')){
-               $('.data', panelState.$tab.closest('.tabbedData')).each(function(){
-                  if(panelState.$data.is($(this)))
-                     panelState.$data.removeClass('hide');
-                  else
-                     $(this).addClass('hide');
-               });
-            }else{
-               $('.data', panelState.$tab.closest('.tabbedData')).each(function(){
-                  $(this).removeClass('hide');
-               });
-               buttonState.apply({save: 0});
-               panelState.$tab = null;
-               panelState.$data = null;
-            }
-            return false;
-         }
-         //trigger present panel title behaviour that defines new private 'panelState.$tabbedData'
-         // $(this) === $(event.target);
-         $newTab.closest('.tabbedData').find('.titleBar .title').trigger({
-            type: 'click',
-            tabbedData: 'custom'
-         });
-         //toggle tab title
-         if(panelState.$tab){
-            panelState.$tab.removeClass('enabled');
-            //panelState.$tab.addClass('visited');
-         }
-         //define new private 'panelState.$tab'
-         panelState.$tab = $newTab;
-         panelState.$tab.addClass('enabled');
-         //panelState.$tab.removeClass('visited');
-         //enable buttons
-         buttonState.apply({save: 1, saveAs: 1});
-         //find tab index in closest parent
-         var $tabs = $newTab.closest('.tabs');
-         var tab;
-         $('.tab', $tabs).each(function(ndx){
-            if(this === event.target){
-               tab = ndx;
-               return false;
-            }
-         });
-         //show relevant content at that index
-         $('.data', panelState.$tabbedData).each(function(ndx){
-            if(ndx === tab){
-               //define new private 'panelState.$data'
-               panelState.$data = $(this);
-               panelState.$data.removeClass('hide');
-            }else
-               $(this).addClass('hide');
-         });
-      });
-      
-      /*
-       * tab close behaviours: '.tabbedData .tabs .tabBar .close'
-       * delegators on '.tabs' (do not alter private 'panelState.$tabbedData' variable)
-       */
-      $('#tabbedDataWrapper').on('click', '.tabbedData .tabs .tabBar .close', function(event){
-         //nullify sibling panelState.$tab and connected panelState.$data
-         if($(this).siblings('.tab').is(panelState.$tab)){
-            buttonState.apply({save: 0});
-            panelState.$tab = null;
-            panelState.$data = null;
-         }
-         //find tab index in closest parent
-         var $tabs = $(this).closest('.tabs');
-         var tab;
-         $('.close', $tabs).each(function(ndx){
-            if(this === event.target){
-               tab = ndx;
-               return false;
-            }
-         });
-         //remove relevant data at that index
-         $('.data', $tabs.closest('.tabbedData')).each(function(ndx){
-            if(ndx === tab){
-               $(this).remove();
-               return false;
-            }
-         });
-         //remove tab bar
-         $(this).closest('.tabBar').remove();
-      });
-      obj = {};
-      return obj;
-   }
-   return {
-      getInstance: function(){
-         if(obj)
-            return obj;
-         else
-            return init();
-      }
-   };
-})();
-}(window.g3 = window.g3 || {}, jQuery, window, document));
-g3.Evaluator.getInstance();
+   g3.evaluator.getInstance();
 });
-   </script>
+</script>
 </body>
 </html>
