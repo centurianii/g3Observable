@@ -37,7 +37,7 @@ my source files (g3), necessary libraries (jquery) and my tests folder (tests):
         |-jquery
         :  :
         |-g3
-        :  |- <g3MyClass.js>
+        :  |- &lt;g3MyClass.js>
         :  :
         |-tests
         :  |-jasmine-standalone-2.0.0
@@ -45,13 +45,13 @@ my source files (g3), necessary libraries (jquery) and my tests folder (tests):
            |  |-spec
            :  :
            |-g3
-           :  |- <g3MyClass-SpecRunner.html>
-              |- <g3MyClass-Spec.js>
-              |- <g3MyClass-SpecHelper.js>
+           :  |- &lt;g3MyClass-SpecRunner.html>
+              |- &lt;g3MyClass-Spec.js>
+              |- &lt;g3MyClass-SpecHelper.js>
               |- g3evaluator.css
               |- g3evaluator.js
               |- g3evaluator.html (rename this file to test-g3MyClass.html)
-              |- <test-g3MyClass.html>
+              |- &lt;test-g3MyClass.html>
               :
 </pre>
 
