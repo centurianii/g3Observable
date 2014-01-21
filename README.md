@@ -57,7 +57,7 @@ my source files (g3), necessary libraries (jquery) and my tests folder (tests):
 
 There are two <code>g3</code> folders: the one contains the actual code and the other under <code>tests</code> contains the test files.
 
-<h3>Do you need help?</h3>
+<h3>Do I need help?</h3>
 <h4>Yesss please!</h4> Jasmine is a tough animal to handle!
 
 Have fun!
