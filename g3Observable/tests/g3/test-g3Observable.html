@@ -1,0 +1,240 @@
+<!doctype html>
+<html>
+<head>
+   <meta charset=utf-8>
+   <title>[Title]</title>
+   <!-- my source files (g3), necessary libraries (jquery) and my tests folder (tests):
+      client
+        :
+        |-jquery
+        :  :
+        |-g3
+        :  |- <g3MyClass.js>
+        :  :
+        |-tests
+        :  |-jasmine-standalone-2.0.0
+           |  |-lib
+           |  |-spec
+           :  :
+           |-g3
+           :  |- <g3MyClass-SpecRunner.html>
+              |- <g3MyClass-Spec.js>
+              |- <g3MyClass-SpecHelper.js>
+              |- g3evaluator.css
+              |- g3evaluator.js
+              |- g3evaluator.html (rename this file to test-g3MyClass.html)
+              |- <test-g3MyClass.html>
+              :
+   -->
+   <link rel="stylesheet" type="text/css" href="g3evaluator.css">
+</head>
+<body>
+
+<div id="title"><h1 contenteditable="false">Evaluator: Test observable pattern</h1><h1 contenteditable="false"><br></h1><span class=""></span><h1 contenteditable="false"><br></h1><span class="">[edit]</span></div>
+<div id="stub"></div>
+<form id="loadFrame">
+<fieldset>
+   <legend class="hover"><b>Load/Remove html-stub in frame</b></legend>
+   <div style="display: none;" class="hidden">
+   <label class="label" for="frameSrc">Frame source:</label><input id="frameSrc" size="30" type="text"><br>
+   <input value="Load" type="button"><input value="Remove" type="button">
+   </div>
+</fieldset>
+</form>
+<form id="bodyHtml">
+<fieldset>
+   <legend class="hover"><b>Load body html (no &lt;script&gt;)</b></legend>
+   <div class="hidden">
+   <textarea rows="5" wrap="virtual"></textarea><br>
+   <input value="Load" type="button"><input value="Clear" type="button"><br>
+   <label class="label" for="exclName">Exclude ids:</label><input id="exclName" size="30" type="text">
+   seperate by space or comma or semicolon or vertical bar: [ ,;|]
+   </div>
+</fieldset>
+</form>
+<form id="addRemoveLib">
+<fieldset>
+   <legend class="hover">Add/Remove library</legend>
+   <div style="display: none;" class="hidden">
+   <label class="label" for="libName">Script id:</label><input id="libName" size="30" type="text"><br>
+   <label class="label" for="libPath">Path:</label><input id="libPath" size="30" type="text"><br>
+   <input value="Add" type="button"><input value="Remove" type="button">
+   </div>
+</fieldset>
+</form>
+<form id="libraries">
+<fieldset>
+   <legend>Load library</legend>
+<label class="label" for="TROqd">g3observable</label><input id="TROqd" value="../../g3/g3observable.js" type="checkbox"><br></fieldset>
+</form>
+<div id="boardWrapper">
+<form id="blackboard">
+<fieldset>
+   <legend><b>Blackboard</b></legend>
+   <label class="label" for="title">Tab title:</label><input id="title" size="40" type="text"><br>
+   <textarea style="width: 100%;" rows="10" wrap="virtual"></textarea><br>
+   <input value="Execute!" type="button"><input value="Save" type="button"><input value="Save to a new tab" type="button"><input value="Clear" type="button"><br>
+</fieldset>
+</form>
+<form id="console">
+<fieldset>
+   <legend><b>Console</b></legend>
+   <div class="data"><pre></pre></div>
+   <input value="Clear" type="button">
+</fieldset>
+</form>
+</div>
+<div class="clear clearBoardWrapper"></div>
+<form id="addRemovePanel">
+<fieldset>
+   <legend class="hover">Add/Remove panel</legend>
+   <div style="display: none;" class="hidden">
+   <label class="label" for="panelTitle">Panel title:</label><input id="panelTitle" size="30" type="text"><br>
+   <input value="Add" type="button"><input value="Remove" type="button">
+   </div>
+</fieldset>
+</form>
+<hr>
+<p><span style="padding: 0.4em 0.8em; color: #003380; background-color: #66a3ff;">Load any tab to blackboard</span></p>
+<div id="tabbedDataWrapper">
+<div class="gridTabbedData"><div class="tabbedData"><div class="titleBar"><p class="title enabled">g3observable</p><p class="load">Load tab</p></div><div class="tabs"><div class="tabBar"><div class="tab">Test observable with #1 observer</div><div class="close">X</div></div><div class="tabBar"><div class="tab">Test observable with #2 observers</div><div class="close">X</div></div></div><div class="tabs"><div class="data"><pre>//Test observable with #1 observer
+var observer = function( args ){
+   console.log(args);
+};
+g3.observable.reset();
+var result;
+
+console.log('get() should have keys: "length" and "example1"');
+console.log('------------------');
+g3.observable.register(observer, 'example1');
+console.log(g3.observable.get());
+
+console.log('get("example1") should have key: 0');
+console.log('------------------');
+console.log(g3.observable.get('example1'));
+
+console.log('notify() should print: an array with 2 args');
+console.log('------------------');
+result = g3.observable.notify('example1', 'hello world!');
+
+console.log('return value of notify() should be: 1');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('notify() should print: an array with 2 args');
+console.log('------------------');
+result = g3.observable.notify('example1', ["test",1,2,3]);
+
+console.log('return value of notify() should be: 1');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('notify() should print: an array with 2 args');
+console.log('------------------');
+result = g3.observable.notify('example1', [{'color':'blue'},{'text':'hello'}]);
+
+console.log('return value of notify() should be: 1');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('return value of unregister() should be: 1');
+console.log('------------------');
+result = g3.observable.unregister(observer, 'example1');
+console.log('unregister: '+result+' observers');
+
+console.log('get() should have key: "length"');
+console.log('------------------');
+console.log(g3.observable.get());
+
+console.log('notify() should not print');
+console.log('------------------');
+result = g3.observable.notify('example1', 'hello again!');
+
+console.log('return value of notify() should be: false');
+console.log('------------------');
+console.log('sent: '+result+' notifies');</pre></div><div class="data"><pre>//Test observable with #2 observers
+var observer1 = function( args ){
+   console.log(args);
+};
+var observer2 = function( args ){
+   console.log(args);
+};
+g3.observable.reset();
+var result;
+
+console.log('get() should have keys: "length" and "example1"');
+console.log('------------------');
+g3.observable.register(observer1, 'example1');
+g3.observable.register(observer2, 'example1');
+console.log(g3.observable.get());
+
+console.log('get("example1") should have keys: 0 and 1');
+console.log('------------------');
+console.log(g3.observable.get('example1'));
+
+console.log('notify() should print: an array with 2 args, 2 times');
+console.log('------------------');
+result = g3.observable.notify('example1', 'hello world!');
+
+console.log('return value of notify() should be: 2');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('notify() should print: an array with 2 args, 2 times');
+console.log('------------------');
+result = g3.observable.notify('example1', ["test",1,2,3]);
+
+console.log('return value of notify() should be: 2');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('notify() should print: an array with 2 args, 2 times');
+console.log('------------------');
+result = g3.observable.notify('example1', [{'color':'blue'},{'text':'hello'}]);
+
+console.log('return value of notify() should be: 2');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('return value of unregister() should be: 1');
+console.log('------------------');
+result = g3.observable.unregister(observer1, 'example1');
+console.log('unregister: '+result+' observers');
+
+console.log('get("example1") should have key: 0');
+console.log('------------------');
+console.log(g3.observable.get('example1'));
+
+console.log('notify() should print: an array with 2 args, 1 time');
+console.log('------------------');
+result = g3.observable.notify('example1', 'hello again!');
+
+console.log('return value of notify() should be: 1');
+console.log('------------------');
+console.log('sent: '+result+' notifies');
+
+console.log('return value of unregister() should be: 1');
+console.log('------------------');
+result = g3.observable.unregister(observer2, 'example1');
+console.log('unregister: '+result+' observers');
+
+console.log('get() should have key: "length"');
+console.log('------------------');
+console.log(g3.observable.get());
+
+console.log('notify() should not print');
+console.log('------------------');
+result = g3.observable.notify('example1', 'hello again!');</pre></div></div></div></div></div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script> window.jQuery || document.write('<script src="//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="../../jquery/jquery-1.10.2.js"><\/script>')</script>
+<script src="../../g3/g3debug.js"></script>
+<script src="g3evaluator.js"></script>
+<script>
+$(function() {
+   g3.evaluator.getInstance();
+});
+</script>
+</body>
+</html>
